@@ -1,0 +1,34 @@
+name:       autoteka
+version:    0.1.0.0
+github:     "ruamk/autoteka"
+license:    MIT
+author:     "Max Taldykin"
+maintainer: "jorpic@gmail.com"
+copyright:  "2020 RAMC"
+
+description: FIXME
+
+extra-source-files:
+- README.md
+
+ghc-options:
+  - -Wall
+  - -Werror
+  - -O2
+  - -funbox-strict-fields
+
+default-extensions:
+  - OverloadedStrings
+  - DeriveGeneric
+  - TypeOperators
+  - DataKinds
+
+library:
+  source-dirs: src
+  dependencies:
+    - base
+    - text
+    - time
+    - aeson
+    - servant
+    - servant-client
