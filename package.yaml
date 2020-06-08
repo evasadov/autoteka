@@ -32,3 +32,20 @@ library:
     - aeson
     - servant
     - servant-client
+
+executables:
+  autoteka:
+    main: Main.hs
+    source-dirs: bin
+    dependencies:
+      - autoteka
+      - aeson
+      - base
+      - http-client
+      - http-client-tls
+      - servant-client
+      - text
+      - time
+    default-extensions:
+      - LambdaCase
+      - OverloadedStrings
