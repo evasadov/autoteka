@@ -3,7 +3,7 @@ module Autoteka
   , AccessToken
   , PreviewRequest(..)
   , createPreview
-  , PreviewId
+  , PreviewId(..)
   , getPreview
   , Preview(..)
   , createReport
