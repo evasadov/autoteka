@@ -43,8 +43,9 @@ data Preview = Preview
   , p_vin :: Maybe Text
   , p_data :: Maybe Aeson.Value
   }
-  deriving (Show, Generic, ToJSON)
+  deriving (Show, Generic)
 
+instance ToJSON Preview where toEncoding = Aeson.genericToEncoding opts
 instance FromJSON Preview where parseJSON = Aeson.genericParseJSON opts
 
 data ReportRequest
@@ -63,8 +64,9 @@ data Report = Report
   , r_pdfLink :: Maybe Text
   , r_data :: Maybe Aeson.Value
   }
-  deriving (Show, Generic, ToJSON)
+  deriving (Show, Generic)
 
+instance ToJSON Report where toEncoding = Aeson.genericToEncoding opts
 instance FromJSON Report where parseJSON = Aeson.genericParseJSON opts
 
 
@@ -74,8 +76,9 @@ data Package = Package
   , p_reportsCnt :: Int
   , p_reportsCntRemain :: Int
   }
-  deriving (Show, Generic, ToJSON)
+  deriving (Show, Generic)
 
+instance ToJSON Package where toEncoding = Aeson.genericToEncoding opts
 instance FromJSON Package where parseJSON = Aeson.genericParseJSON opts
 
 opts :: Aeson.Options
