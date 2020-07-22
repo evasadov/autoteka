@@ -12,8 +12,7 @@ import qualified Data.Text as T
 import qualified Data.Text.Lazy.IO as L
 import           Network.HTTP.Client (newManager)
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
-import           Servant.Client
-  (runClientM, mkClientEnv, BaseUrl(..), Scheme(Https))
+import           Servant.Client (runClientM)
 import           System.Environment (lookupEnv, getArgs)
 
 
@@ -25,8 +24,7 @@ main = do
   Just clientSecret <- fmap T.pack <$> lookupEnv "CLIENT_SECRET"
   [regNumber] <- map T.pack <$> getArgs
 
-  mgr <- newManager tlsManagerSettings
-  let env = mkClientEnv mgr (BaseUrl Https "api.avito.ru" 443 "")
+  env <- Att.mkClientEnv <$> newManager tlsManagerSettings
   res <- flip runClientM env $ do
     tok <- Att.getToken clientId clientSecret
     liftIO $ print tok

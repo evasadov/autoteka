@@ -1,5 +1,6 @@
 module Autoteka
-  ( getToken
+  ( Autoteka.mkClientEnv
+  , getToken
   , AccessToken
   , PreviewRequest(..)
   , createPreview
@@ -16,11 +17,17 @@ module Autoteka
 
 import           Data.Text (Text)
 import           Data.Proxy (Proxy(..))
+import           Network.HTTP.Client (Manager)
 import           Servant.API
-import           Servant.Client
+import           Servant.Client as Servant
 
 import Autoteka.Types
 import Autoteka.Internals (Result, resultValue)
+
+
+mkClientEnv :: Manager -> ClientEnv
+mkClientEnv mgr = Servant.mkClientEnv mgr
+  (BaseUrl Https "api.avito.ru" 443 "")
 
 
 type AutotekaAPI
