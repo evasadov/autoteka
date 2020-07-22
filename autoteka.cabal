@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5b5e55c172b0cb47502236e03ca093b1ec92d86cfa9f30ce2ebec0eedd96e634
+-- hash: 035979439febeeb93a8f2bfb9e331e6be4e8c4aca46c345fe322d782e5ae2a38
 
 name:           autoteka
 version:        0.1.0.0
@@ -33,10 +33,11 @@ library
   hs-source-dirs:
       src
   default-extensions: OverloadedStrings DeriveGeneric TypeOperators DataKinds
-  ghc-options: -Wall -O2 -funbox-strict-fields
+  ghc-options: -Wall -Werror -O2 -funbox-strict-fields
   build-depends:
       aeson
     , base
+    , http-client
     , servant
     , servant-client
     , text
@@ -50,7 +51,7 @@ executable autoteka
   hs-source-dirs:
       bin
   default-extensions: OverloadedStrings DeriveGeneric TypeOperators DataKinds LambdaCase OverloadedStrings
-  ghc-options: -Wall -O2 -funbox-strict-fields
+  ghc-options: -Wall -Werror -O2 -funbox-strict-fields
   build-depends:
       aeson
     , autoteka
