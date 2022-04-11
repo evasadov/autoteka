@@ -1,5 +1,5 @@
 name:       autoteka
-version:    0.1.0.0
+version:    0.2.0.0
 github:     "ruamk/autoteka"
 license:    MIT
 author:     "Max Taldykin"
@@ -33,6 +33,7 @@ library:
     - servant
     - servant-client
     - http-client
+    - http-api-data
 
 executables:
   autoteka:
