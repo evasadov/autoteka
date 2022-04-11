@@ -27,15 +27,13 @@ import Autoteka.Internals (Result, resultValue)
 
 mkClientEnv :: Manager -> ClientEnv
 mkClientEnv mgr = Servant.mkClientEnv mgr
-  (BaseUrl Https "api.avito.ru" 443 "")
+  (BaseUrl Https "pro.autoteka.ru" 443 "")
 
 
 type AutotekaAPI
   = "token"
-    :> QueryParam' '[Required] "grant_type" Text
-    :> QueryParam' '[Required] "client_id" Text
-    :> QueryParam' '[Required] "client_secret" Text
-    :> Get '[JSON] AccessToken
+    :> ReqBody '[FormUrlEncoded] TokenRequest
+    :> Post '[JSON] AccessToken
   :<|> "autoteka" :> "v1" :> "request-preview-by-regnumber"
     :> Header' '[Required] "Authorization" AccessToken
     :> ReqBody '[JSON] PreviewRequest
@@ -77,7 +75,8 @@ getActivePackage :: AccessToken -> ClientM Package
   , createReport, getReport
   , getActivePackage
   )
-  = ( getToken' "client_credentials"
+  = ( \clientId clientSecret -> getToken'
+                             $ TokenRequest "client_credentials" clientId clientSecret
     , \tok req -> resultValue <$> createPreview' tok req
     , \tok pid -> resultValue <$> getPreview' tok pid
     , \tok pid -> resultValue <$> createReport' tok (ReportRequest pid)

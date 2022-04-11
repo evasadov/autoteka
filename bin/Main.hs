@@ -1,22 +1,21 @@
-
 module Main where
 
-import           Data.Aeson (ToJSON)
-import qualified Data.Aeson.Text as Aeson
-import           Control.Concurrent (threadDelay)
-import           Control.Monad (void)
-import           Control.Monad.IO.Class (MonadIO, liftIO)
-import           Data.Function ((&))
-import           Data.Time.Clock (getCurrentTime)
-import qualified Data.Text as T
-import qualified Data.Text.Lazy.IO as L
-import           Network.HTTP.Client (newManager)
+import           Control.Concurrent      (threadDelay)
+import           Control.Monad           (void)
+import           Control.Monad.IO.Class  (MonadIO, liftIO)
+import           Data.Aeson              (ToJSON)
+import qualified Data.Aeson.Text         as Aeson
+import           Data.Function           ((&))
+import qualified Data.Text               as T
+import qualified Data.Text.Lazy.IO       as L
+import           Data.Time.Clock         (getCurrentTime)
+import           Network.HTTP.Client     (newManager)
 import           Network.HTTP.Client.TLS (tlsManagerSettings)
-import           Servant.Client (runClientM)
-import           System.Environment (lookupEnv, getArgs)
+import           Servant.Client          (runClientM)
+import           System.Environment      (getArgs, lookupEnv)
 
 
-import qualified Autoteka as Att
+import qualified Autoteka                as Att
 
 main :: IO ()
 main = do

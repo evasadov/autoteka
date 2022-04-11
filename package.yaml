@@ -33,6 +33,7 @@ library:
     - servant
     - servant-client
     - http-client
+    - http-api-data
 
 executables:
   autoteka:

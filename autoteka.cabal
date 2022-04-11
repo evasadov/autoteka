@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 035979439febeeb93a8f2bfb9e331e6be4e8c4aca46c345fe322d782e5ae2a38
+-- hash: 6c101d51d16d6aaab8098e75a8a8a96214a795086b339c4c4436f03b2208595d
 
 name:           autoteka
 version:        0.1.0.0
@@ -37,6 +37,7 @@ library
   build-depends:
       aeson
     , base
+    , http-api-data
     , http-client
     , servant
     , servant-client
